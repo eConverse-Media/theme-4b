@@ -78,7 +78,8 @@ h2, .h2 {
     padding-left: 0;
 }
 h3, .h3,
-.HLLandingControl h3 a {
+.HLLandingControl h3 a,
+.HLLandingControl .Content h3 a {
     color: #1D1D1D;
     font-size: 20px;
     line-height: 1.2;
@@ -223,6 +224,9 @@ td.ProfilePic > a > img {
     content: '\f178';
     margin-left: 10px;
 }
+.HLLandingControl div[id*="More"] {
+    margin-top: 20px;
+}
 .HLLandingControl div[id*="More"],
 .HLLandingControl div[id*="More"] .col-md-12 {
     padding: 0;
@@ -291,7 +295,46 @@ a.label.label-search-tag {
     padding: 4px 10px;
 }
 
+/*** events ***/
+.HLEventList .timeAgoFormat {
+    font-size: 14px;
+    line-height: 1.2;
+}
 
+/*** event date blocks ***/
+.HLEventList ul li .col-md-2 {
+    width: 90px;
+    margin-right: 20px;
+    float: left;
+}
+.HLEventList ul li .col-md-10 {
+    width: calc(100% - 110px);
+    float: left;
+}
+.HLEventList ul li .col-md-2 > .row.margin-bottom-medium {
+    margin-bottom: 0;
+}
+.HLEventList .date-block {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #FAFAFA;
+    padding: 15px !important;
+}
+.HLEventList .date-block .calendar-day {
+    display: none;
+}
+.HLEventList .date-block .calendary-number {
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1;
+}
+.HLEventList .date-block .calendar-month {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+}
 
 /****** primary color background ******/
 .primary-color-bg {
@@ -327,4 +370,9 @@ a:focus {
 a.label.label-search-tag {
     color: [PrimaryColor];
     border-color: [PrimaryColor];
+}
+
+/*** date blocks ***/
+.HLEventList .date-block {
+    color: [SecondaryColor];
 }
