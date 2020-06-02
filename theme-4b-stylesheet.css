@@ -248,6 +248,7 @@ td.ProfilePic > a > img {
     box-shadow: 0px 4px 15px rgba(231, 232, 236, 0.3), 0px 1px 2px #E7E8EC;
     border-radius: 6px;
     border: 1px solid #FBFBFB;
+    position: relative;
 }
 
 .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
@@ -262,8 +263,51 @@ td.ProfilePic > a > img {
     width: calc(100% - 70px); 
     padding: 0;
 }
+.HLLandingControl.SearchResults ul li {
+    padding-right: 140px;
+}
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right {
-    display: none;
+    position: static;
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label {
+    position: absolute;
+    width: 120px;
+    top: -20px;
+    right: -140px;
+    bottom: -20px;
+    background: #FAFAFA;
+    font-size: 0;
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
+    font-family: 'Font Awesome 5 Pro';
+    font-size: 26px;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-weight: 300;
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.default::before {
+    content: '\f15c';
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.announcement::before {
+    content: '\f1ea';
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.discussion::before {
+    content: '\f27a';
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.event::before {
+    content: '\f073';
+}
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.blog::before {
+    content: '\f109';
 }
 
 /*** bylines and posted in ***/
@@ -299,6 +343,9 @@ a.label.label-search-tag {
 .HLEventList .timeAgoFormat {
     font-size: 14px;
     line-height: 1.2;
+}
+.HLEventList div[id*="ContentPanel"] > .no-pad > .pull-right + br {
+    display: none;
 }
 
 /*** event date blocks ***/
@@ -370,6 +417,11 @@ a:focus {
 a.label.label-search-tag {
     color: [PrimaryColor];
     border-color: [PrimaryColor];
+}
+
+/*** icons ***/
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
+    color: [SecondaryColor];
 }
 
 /*** date blocks ***/
