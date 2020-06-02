@@ -93,6 +93,9 @@ h4, .h4 {
     color: #B5BBC7;
     margin: 0;
 }
+.section-header {
+    margin-top: 40px;
+}
 a {
     text-decoration: underline;
 }
@@ -259,6 +262,42 @@ td.ProfilePic > a > img {
     display: none;
 }
 
+/*** bylines and posted in ***/
+.HLLandingControl .ByLine,
+.HLLandingControl h5 {
+    color: #7c7c7c;
+    font-size: 14px;
+    line-height: 1.14;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.HLLandingControl .ByLine + h5 {
+    margin-left: 10px;
+}
+
+/*** all content list tags ***/
+.content-tags .text-muted {
+    display: none;
+}
+.content-tags a.label.label-search-tag:first-of-type {
+    margin-left: -6px;
+}
+a.label.label-search-tag {
+    background-color: transparent;
+    font-size: 11px;
+    line-height: 1.18;
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+
+
+/****** primary color background ******/
+.primary-color-bg {
+    margin-top: 55px;
+}
+
 /****** color picker specifics ******/
 
 /*** fonts ***/
@@ -282,4 +321,10 @@ a:focus {
 .arrow-link a,
 .HLLandingControl div[id*="More"] a {
     color: [PrimaryColor];
+}
+
+/*** tags ***/
+a.label.label-search-tag {
+    color: [PrimaryColor];
+    border-color: [PrimaryColor];
 }
