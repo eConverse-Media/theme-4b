@@ -2,8 +2,10 @@ $(function () {
     handleNavLocation();
     handleSearch();
     handleHero();
+    handleTiles();
     handleAllContentList();
     handleEventDateBlocks();
+    handleCopyrightDate();
 });
 
 function handleNavLocation() {
@@ -19,6 +21,22 @@ function handleHero() {
         greeting = '<div class="hero-greeting">Welcome back, <strong>' + name + '.</strong></div>';
 
     $(greeting).prependTo('.hero');    
+}
+
+function handleTiles() {
+    $('.tile-secondary').each(function () {
+        var self = $(this),
+            link = $(self).find('a'),
+            href = $(link).attr('href');
+
+        if ($(link).attr('target') == '_blank') {
+            $(self).wrapInner('<a href="' + href + '" target="_blank" rel="noopener" />');
+        } else {
+            $(self).wrapInner('<a href="' + href + '" />');
+        }
+
+        $(link).hide();
+    });
 }
 
 function handleAllContentList() {
@@ -67,4 +85,10 @@ function handleEventDateBlocks() {
         month = month.substring(0, 3);
         $(self).find('.date-block .calendar-month').text(month);
     });
+}
+
+function handleCopyrightDate() {
+    var year = new Date().getFullYear();
+
+    $('.copyright-year').text(year);
 }

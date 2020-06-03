@@ -383,7 +383,8 @@ td.ProfilePic > a > img {
     display: flex;
 }
 .hero .ContentItemHtml {
-    flex-basis: 20%;
+    flex-basis: auto;
+    max-width: 125px;
 }
 .hero .HtmlContent {
     flex-basis: 100%;
@@ -424,6 +425,34 @@ td.ProfilePic > a > img {
 }
 .hero .users a::before {
     content: '\f0c0';
+}
+
+/****** tiles ******/
+.tile-secondary > a {
+    display: block;
+    padding: 40px 20px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 4px rgba(231, 232, 236, 0.3), 0px 1px 2px #E7E8EC;
+    margin-bottom: 25px;
+    text-decoration: none;
+    position: relative;
+}
+.tile-secondary h2 {
+    margin-top: 0;
+    font-size: 26px;
+}
+.tile-secondary h2,
+.tile-secondary p {
+    color: #fff;
+}
+.tile-secondary > a::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 128px;
+    color: #000;
+    opacity: 0.05;
 }
 
 /****** landing controls ******/
@@ -654,59 +683,47 @@ a.label.label-search-tag {
 
 /****** color picker specifics ******/
 
-/*** fonts ***/
-h2, .h2 {
+/*** color: Primary Color ***/
+
+h2, .h2,
+a,
+.arrow-link a,
+.HLLandingControl div[id*="More"] a,
+a.label.label-search-tag {
     color: [PrimaryColor];
 }
-a {
-    color: [PrimaryColor];
-}
+
+/*** color: Secondary Color ***/
+
 a:hover,
-a:focus {
+a:focus,
+.arrow-link a:hover,
+.arrow-link a:focus,
+.HLLandingControl div[id*="More"] a:hover,
+.HLLandingControl div[id*="More"] a:focus,
+.search-btn-top,
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
+.HLEventList .date-block,
+.HLEngagement .points-label {
     color: [SecondaryColor];
 }
 
-/*** buttons ***/
-#Welcome_LoginLink {
-    background-color: [PrimaryColor];
-}
+/*** background: Primary Color ***/
 
-/*** backgrounds ***/
+#Welcome_LoginLink,
 .primary-color-bg {
     background-color: [PrimaryColor];
 }
 
-/*** buttons and links ***/
-.arrow-link a,
-.HLLandingControl div[id*="More"] a {
-    color: [PrimaryColor];
-}
-.search-btn-top {
-    color: [SecondaryColor];
-}
+/*** background: Secondary Color ***/
 
-/*** hero ***/
-.hero a::before {
+.hero a::before,
+.tile-secondary > a {
     background: [SecondaryColor];
 }
 
-/*** tags ***/
+/*** border: Primary Color ***/
+
 a.label.label-search-tag {
-    color: [PrimaryColor];
     border-color: [PrimaryColor];
-}
-
-/*** icons ***/
-.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
-    color: [SecondaryColor];
-}
-
-/*** date blocks ***/
-.HLEventList .date-block {
-    color: [SecondaryColor];
-}
-
-/*** most active members ***/
-.HLEngagement .points-label {
-    color: [SecondaryColor];
 }
