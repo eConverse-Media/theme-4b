@@ -1,6 +1,7 @@
 $(function () {
     handleNavLocation();
     handleSearch();
+    handleHero();
     handleAllContentList();
     handleEventDateBlocks();
 });
@@ -11,6 +12,13 @@ function handleNavLocation() {
 
 function handleSearch() {
     $('#NAV .navbar-nav').after('<button type="button" class="search-btn-top" />');
+}
+
+function handleHero() {
+    var name = $('#ProfileContainer h4').text(),
+        greeting = '<div class="hero-greeting">Welcome back, <strong>' + name + '.</strong></div>';
+
+    $(greeting).prependTo('.hero');    
 }
 
 function handleAllContentList() {

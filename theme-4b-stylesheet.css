@@ -351,8 +351,9 @@ td.ProfilePic > a > img {
 
 /****** homepage hero ******/
 
-.hero {
+.hero.primary-color-bg {
     position: relative;
+    margin-top: 0;
 }
 .hero::after {
     position: absolute;
@@ -363,6 +364,11 @@ td.ProfilePic > a > img {
     background: linear-gradient(269.7deg, rgba(0, 0, 0, 0.6) 0.06%, rgba(0, 0, 0, 0) 99.97%);
     display: block;
     z-index: 0;
+}
+.hero-greeting {
+    text-align: left;
+    color: #fff;
+    margin-bottom: 35px;
 }
 .hero > .col-md-12 {
     display: flex;
