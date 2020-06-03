@@ -349,6 +349,77 @@ td.ProfilePic > a > img {
     }
 }
 
+/****** homepage hero ******/
+
+.hero {
+    position: relative;
+}
+.hero::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(269.7deg, rgba(0, 0, 0, 0.6) 0.06%, rgba(0, 0, 0, 0) 99.97%);
+    display: block;
+    z-index: 0;
+}
+.hero > .col-md-12 {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
+.hero .ContentItemHtml,
+.hero .HtmlContent {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+}
+.hero .ContentItemHtml {
+    flex-basis: 20%;
+}
+.hero .HtmlContent {
+    flex-basis: 100%;
+}
+.hero a {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+.hero a::before {
+    font-family: 'Font Awesome 5 Pro';
+    content: '';
+    border-radius: 50%;
+    display: block;
+    font-size: 38px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    font-weight: 300;
+    margin: 0 auto 10px auto;
+}
+.hero .bell a::before {
+    content: '\f4a5';
+}
+.hero .refresh a::before {
+    content: '\f0e2';
+}
+.hero .laptop a::before {
+    content: '\f109';
+}
+.hero .folders a::before {
+    content: '\f660';
+}
+.hero .users a::before {
+    content: '\f0c0';
+}
+
 /****** landing controls ******/
 .ContentUserControl .HLLandingControl,
 .HLLandingControl .Content {
@@ -606,6 +677,11 @@ a:focus {
 }
 .search-btn-top {
     color: [SecondaryColor];
+}
+
+/*** hero ***/
+.hero a::before {
+    background: [SecondaryColor];
 }
 
 /*** tags ***/
