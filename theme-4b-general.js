@@ -1,7 +1,17 @@
 $(function () {
+    handleNavLocation();
+    handleSearch();
     handleAllContentList();
     handleEventDateBlocks();
 });
+
+function handleNavLocation() {
+    $('#NAV').appendTo('#MPheader > .row:first-child > .col-md-12');
+}
+
+function handleSearch() {
+    $('#NAV .navbar-nav').after('<button type="button" class="search-btn-top" />');
+}
 
 function handleAllContentList() {
     $('.HLLandingControl.SearchResults ul li').each(function () {
