@@ -94,9 +94,6 @@ h4, .h4 {
     color: #B5BBC7;
     margin: 0;
 }
-.section-header {
-    margin-top: 40px;
-}
 a {
     text-decoration: underline;
 }
@@ -201,7 +198,8 @@ td.ProfilePic > a > img {
 
 /****** buttons and links ******/
 .arrow-link a,
-.HLLandingControl div[id*="More"] a {
+.HLLandingControl div[id*="More"] a,
+.HLLandingControl div[id*="BottomLink"] a {
     font-weight: 700;
     font-size: 14px;
     line-height: 1.2;
@@ -209,26 +207,32 @@ td.ProfilePic > a > img {
     text-transform: uppercase;
     text-decoration: none;
 }
-.HLLandingControl div[id*="More"] a {
+.HLLandingControl div[id*="More"] a,
+.HLLandingControl div[id*="BottomLink"] a {
     padding: 0;
     background: transparent;
     border: none;
 }
-.HLLandingControl div[id*="More"] a:active {
+.HLLandingControl div[id*="More"] a:active,
+.HLLandingControl div[id*="BottomLink"] a:active {
     box-shadow: none;
 }
 .arrow-link a::after,
-.HLLandingControl div[id*="More"] a::after {
+.HLLandingControl div[id*="More"] a::after,
+.HLLandingControl div[id*="BottomLink"] a::after {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f178';
     margin-left: 10px;
 }
-.HLLandingControl div[id*="More"] {
+.HLLandingControl div[id*="More"]:not(.col-md-12),
+.HLLandingControl div[id*="BottomLink"] {
     margin-top: 20px;
 }
 .HLLandingControl div[id*="More"],
-.HLLandingControl div[id*="More"] .col-md-12 {
+.HLLandingControl div[id*="More"] .col-md-12,
+.HLLandingControl div[id*="BottomLink"],
+.HLLandingControl div[id*="BottomLink"] .col-md-12 {
     padding: 0;
 }
 .primary-color-bg .arrow-link a {
@@ -441,6 +445,9 @@ td.ProfilePic > a > img {
 .alternate.hero .ContentItemHtml {
     flex-basis: 55%;
 }
+.aternate-hero .featured-content .HLLandingControl {
+    margin-bottom: 0;
+}
 .hero .featured-content {
     border: 1px solid rgba(255,255,255,0.1);
     padding: 30px;
@@ -518,11 +525,14 @@ td.ProfilePic > a > img {
 }
 
 /****** landing controls ******/
+.home .HLLandingControl,
+.home .tile-secondary + .tile-secondary {
+    margin-bottom: 40px;
+}
 .ContentUserControl .HLLandingControl,
 .HLLandingControl .Content {
     padding: 0;
     border: none;
-    margin: 0;
 }
 
 .HLLandingControl ul li {
@@ -532,6 +542,9 @@ td.ProfilePic > a > img {
     border-radius: 6px;
     border: 1px solid #FBFBFB;
     position: relative;
+}
+.HLLandingControl ul li:last-child {
+    margin-bottom: 0;
 }
 
 .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
@@ -552,6 +565,11 @@ td.ProfilePic > a > img {
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right {
     position: static;
 }
+.HLLandingControl p[id*="Description"]:last-of-type {
+    margin-bottom: 0;
+}
+
+/*** icons ***/
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label {
     position: absolute;
     width: 120px;
@@ -603,8 +621,12 @@ td.ProfilePic > a > img {
     margin-top: 0;
     margin-bottom: 20px;
 }
-.HLLandingControl .ByLine + h5 {
+.HLLandingControl .ByLine:not(:empty) + h5 {
     margin-left: 10px;
+}
+.home .HLRecentBlogs.HLLandingControl h5 {
+    color: #000;
+    margin-bottom: 0;
 }
 
 /*** all content list tags ***/
@@ -666,6 +688,14 @@ a.label.label-search-tag {
     line-height: 1.2;
 }
 
+/*** articles ***/
+.home .sort-options-container {
+    display: none;
+}
+.home .HLRecentBlogs .row.content-row p.break-word {
+    display: none;
+}
+
 /*** most active members ***/
 .HLLandingControl.HLEngagement ul {
     display: flex;
@@ -711,16 +741,13 @@ a.label.label-search-tag {
 
 /****** primary color background ******/
 .primary-color-bg {
-    margin-top: 55px;
+    margin-top: 15px;
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/ECONVERSEMEDIA/f806703f-aed7-4054-a35a-77d806ee94f3/UploadedImages/Theme%204B/hero.png');
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: left center;
     text-align: center;
     padding: 40px calc(50% - 600px);
-}
-.primary-color-bg .section-header {
-    margin-top: 0;
 }
 .primary-color-bg h4,
 .primary-color-bg h2 {
@@ -800,6 +827,7 @@ h2, .h2,
 a,
 .arrow-link a,
 .HLLandingControl div[id*="More"] a,
+.HLLandingControl div[id*="BottomLink"] a,
 a.label.label-search-tag {
     color: [PrimaryColor];
 }
@@ -812,6 +840,8 @@ a:focus,
 .arrow-link a:focus,
 .HLLandingControl div[id*="More"] a:hover,
 .HLLandingControl div[id*="More"] a:focus,
+.HLLandingControl div[id*="BottomLink"] a:hover,
+.HLLandingControl div[id*="BottomLink"] a:focus,
 .search-btn-top,
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
 .HLEventList .date-block,

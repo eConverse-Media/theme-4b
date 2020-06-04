@@ -4,6 +4,7 @@ $(function () {
     handleHero();
     handleTiles();
     handleAllContentList();
+    handleBlogsList();
     handleEventDateBlocks();
     handleCopyright();
 });
@@ -39,16 +40,22 @@ function handleTiles() {
     });
 }
 
+function handleByLineAndPostedIn(self) {
+    var byline = $(self).find('.ByLine'),
+        postedIn = $(self).find('h5');
+ 
+    $(byline).text($.trim($(byline).text()));
+
+    $(postedIn).insertAfter(byline);
+}
+
 function handleAllContentList() {
     $('.HLLandingControl.SearchResults ul li').each(function () {
+        var self = $(this);
 
         // handle byline and posted in
 
-        var self = $(this),
-            byline = $(self).find('.ByLine'),
-            postedIn = $(self).find('h5');
-
-        $(postedIn).insertAfter(byline);
+        handleByLineAndPostedIn(self);
 
         // handle icons
 
@@ -74,6 +81,13 @@ function handleAllContentList() {
                 $(label).addClass('default');
                 break;
         }
+    });
+}
+
+function handleBlogsList() {
+    $('.home .HLRecentBlogs ul li').each(function () {
+        var self = $(this);
+        handleByLineAndPostedIn(self);
     });
 }
 
