@@ -5,7 +5,7 @@ $(function () {
     handleTiles();
     handleAllContentList();
     handleEventDateBlocks();
-    handleCopyrightDate();
+    handleCopyright();
 });
 
 function handleNavLocation() {
@@ -87,8 +87,13 @@ function handleEventDateBlocks() {
     });
 }
 
-function handleCopyrightDate() {
+function handleCopyright() {
+
+    // handle date
     var year = new Date().getFullYear();
 
     $('.copyright-year').text(year);
+
+    // handle row wrapper
+    $('.footer-copyright').closest('.row').addClass('footer-bottom-content');
 }

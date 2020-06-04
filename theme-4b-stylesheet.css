@@ -58,7 +58,7 @@ body {
 body,
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Lato', sans-serif;
+    font-family: lato, sans-serif;
     color: #7C7C7C;
     font-weight: 400;
     font-size: 16px;
@@ -382,14 +382,14 @@ td.ProfilePic > a > img {
     flex-shrink: 1;
     display: flex;
 }
-.hero .ContentItemHtml {
+.hero .icon {
     flex-basis: auto;
     max-width: 125px;
 }
 .hero .HtmlContent {
     flex-basis: 100%;
 }
-.hero a {
+.hero .icon a {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 100%;
@@ -398,7 +398,7 @@ td.ProfilePic > a > img {
     display: block;
     text-align: center;
 }
-.hero a::before {
+.hero .icon a::before {
     font-family: 'Font Awesome 5 Pro';
     content: '';
     border-radius: 50%;
@@ -411,20 +411,75 @@ td.ProfilePic > a > img {
     font-weight: 300;
     margin: 0 auto 10px auto;
 }
-.hero .bell a::before {
-    content: '\f4a5';
+.hero .icon.bell a::before {
+    font-family: theme4b;
+    content: '\f002';
 }
-.hero .refresh a::before {
+.hero .icon.refresh a::before {
     content: '\f0e2';
 }
-.hero .laptop a::before {
+.hero .icon.laptop a::before {
     content: '\f109';
 }
-.hero .folders a::before {
+.hero .icon.folders a::before {
     content: '\f660';
 }
-.hero .users a::before {
+.hero .icon.users a::before {
     content: '\f0c0';
+}
+
+/*** alternate homepage hero ***/
+.alternate.hero {
+    text-align: left;
+}
+.alternate.hero .hero-greeting {
+    display: none;
+}
+.hero h1 {
+    color: #fff;
+}
+.alternate.hero .ContentItemHtml {
+    flex-basis: 55%;
+}
+.hero .featured-content {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 30px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 45%;
+}
+.hero .featured-content h2 {
+    color: #B5BBC7;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+.hero .featured-content .HLLandingControl ul li {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0 75px 0 0;
+    position: relative;
+}
+.hero .featured-content .HLLandingControl h3 a {
+    color: #fff;
+}
+.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label {
+    background: transparent;
+    top: 0;
+    right: -55px;
+    bottom: auto;
+    width: auto;
+}
+.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
+    color: #fff;
+    font-family: theme4b;
+    content: '\f003';
+}
+.alternate.hero .HLLandingControl.SearchResults div[id*="More"] a {
+    color: #fff;
 }
 
 /****** tiles ******/
@@ -446,13 +501,20 @@ td.ProfilePic > a > img {
     color: #fff;
 }
 .tile-secondary > a::after {
+    font-family: theme4b;
     content: '';
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 0;
+    right: 0;
     font-size: 128px;
     color: #000;
     opacity: 0.05;
+}
+.tile-secondary.button-press > a::after {
+    content: '\f000';
+}
+.tile-secondary.cloud > a::after {
+    content: '\f001';
 }
 
 /****** landing controls ******/
@@ -460,6 +522,7 @@ td.ProfilePic > a > img {
 .HLLandingControl .Content {
     padding: 0;
     border: none;
+    margin: 0;
 }
 
 .HLLandingControl ul li {
@@ -665,6 +728,54 @@ a.label.label-search-tag {
     color: #fff;
 }
 
+/****** footer ******/
+#MPFooterLink,
+#MPCopyright {
+    display: none;
+}
+#MPOuterFooter {
+    background: #FAFAFA;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #1D1D1D;
+}
+#FOOTER > .row > .col-md-12 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+#FOOTER > .row:first-child > .col-md-12:first-child {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #fff;
+}
+.footer-logo-contact,
+.footer-links {
+    flex-basis: 50%;
+}
+.footer-logo-contact img {
+    margin-bottom: 10px;
+}
+.footer-links ul {
+    display: flex;
+    justify-content: flex-end;
+}
+.footer-links ul li {
+    list-style-type: none;
+}
+.footer-links ul li:not(:first-child) {
+    margin-left: 16px;
+}
+.footer-links a {
+    color: #1d1d1d;
+    text-decoration: none;
+}
+.footer-bottom-content {
+    padding: 12px 0;
+}
+.footer-bottom-content a {
+    color: #1d1d1d;
+}
+
 /****** responsive ******/
 
 /*** larger screens only ***/
@@ -717,8 +828,9 @@ a:focus,
 
 /*** background: Secondary Color ***/
 
-.hero a::before,
-.tile-secondary > a {
+.hero .icon a::before,
+.tile-secondary > a,
+.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
     background: [SecondaryColor];
 }
 
