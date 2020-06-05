@@ -24,19 +24,31 @@ function handleHero() {
     $(greeting).prependTo('.hero');    
 }
 
-function handleTiles() {
-    $('.tile-secondary').each(function () {
-        var self = $(this),
-            link = $(self).find('a'),
-            href = $(link).attr('href');
+function handleTileLink(self, link) {
+    var href = $(link).attr('href');
 
-        if ($(link).attr('target') == '_blank') {
-            $(self).wrapInner('<a href="' + href + '" target="_blank" rel="noopener" />');
+    if ($(link).attr('target') == '_blank') {
+        $(self).wrapInner('<a href="' + href + '" target="_blank" rel="noopener" />');
+    } else {
+        $(self).wrapInner('<a href="' + href + '" />');
+    }
+
+    $(link).contents().unwrap();
+}
+
+function handleTiles() {
+
+    $('.tile').each(function () {
+        var self = $(this),
+            link;
+
+        if (!!($(self).find('h2 a').html())) {
+            link = $(self).find('h2 a');
         } else {
-            $(self).wrapInner('<a href="' + href + '" />');
+            link = $(self).find('h3 a');
         }
 
-        $(link).hide();
+        handleTileLink(self, link);
     });
 }
 

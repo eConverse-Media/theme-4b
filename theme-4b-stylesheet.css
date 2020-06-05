@@ -52,6 +52,27 @@ body {
     border-color: #f5f5f5;
 }
 
+/*** padding and margins ***/
+.home .row-wide {
+    max-width: 1230px;
+}
+#FOOTER,
+#FOOTER > .row-wide > .col-md-12,
+#HEADER > .col-md-12 {
+    padding: 0;
+}
+.tiles.row-full > .col-md-12[class*="section"] {
+    margin-left: -15px;
+    margin-right: -15px;
+    width: calc(100% + 30px);
+}
+.no-pageTitle-padding {
+    padding-top: 0;
+}
+.margin-bottom-40 {
+    margin-bottom: 40px;
+}
+
 /****** basics ******/
 
 /*** fonts ***/
@@ -239,6 +260,36 @@ td.ProfilePic > a > img {
     color: #fff;
 }
 
+/****** icons ******/
+.icon.bell a::before {
+    font-family: theme4b;
+    content: '\f002';
+}
+.icon.refresh a::before {
+    font-family: 'Font Awesome 5 Pro';
+    content: '\f0e2';
+}
+.icon.laptop a::before {
+    font-family: 'Font Awesome 5 Pro';
+    content: '\f109';
+}
+.icon.folders a::before {
+    font-family: 'Font Awesome 5 Pro';
+    content: '\f660';
+}
+.icon.users a::before {
+    font-family: 'Font Awesome 5 Pro';
+    content: '\f0c0';
+}
+.button-press a::before {
+    font-family: theme4b;
+    content: '\f000';
+}
+.cloud a::before {
+    font-family: theme4b;
+    content: '\f001';
+}
+
 /****** header ******/
 #BtnShowProfile {
     display: none;
@@ -357,7 +408,6 @@ td.ProfilePic > a > img {
 
 .hero.primary-color-bg {
     position: relative;
-    margin-top: 0;
 }
 .hero::after {
     position: absolute;
@@ -373,12 +423,14 @@ td.ProfilePic > a > img {
     text-align: left;
     color: #fff;
     margin-bottom: 35px;
+    position: relative;
 }
 .hero > .col-md-12 {
     display: flex;
     justify-content: space-between;
     position: relative;
     z-index: 10;
+    align-items: center;
 }
 .hero .ContentItemHtml,
 .hero .HtmlContent {
@@ -403,8 +455,6 @@ td.ProfilePic > a > img {
     text-align: center;
 }
 .hero .icon a::before {
-    font-family: 'Font Awesome 5 Pro';
-    content: '';
     border-radius: 50%;
     display: block;
     font-size: 38px;
@@ -414,22 +464,6 @@ td.ProfilePic > a > img {
     line-height: 70px;
     font-weight: 300;
     margin: 0 auto 10px auto;
-}
-.hero .icon.bell a::before {
-    font-family: theme4b;
-    content: '\f002';
-}
-.hero .icon.refresh a::before {
-    content: '\f0e2';
-}
-.hero .icon.laptop a::before {
-    content: '\f109';
-}
-.hero .icon.folders a::before {
-    content: '\f660';
-}
-.hero .icon.users a::before {
-    content: '\f0c0';
 }
 
 /*** alternate homepage hero ***/
@@ -489,27 +523,82 @@ td.ProfilePic > a > img {
     color: #fff;
 }
 
+/****** gray background section ******/
+.bg-gray {
+    background-color: #fafafa;
+    padding: 40px calc(50% - 600px);
+}
+
 /****** tiles ******/
-.tile-secondary > a {
+.tiles > .col-md-12 {
+    display: flex;
+    justify-content: space-evenly;
+}
+.tiles .tile {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 25%;
+    padding: 0 15px;
+    display: flex;
+}
+.tiles .tile > a {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basiS: 100%;
+}
+.tile > a {
     display: block;
-    padding: 40px 20px;
+    padding: 25px 20px;
     border-radius: 6px;
     box-shadow: 0px 4px 4px rgba(231, 232, 236, 0.3), 0px 1px 2px #E7E8EC;
     margin-bottom: 25px;
     text-decoration: none;
     position: relative;
+    background: #fff;
 }
-.tile-secondary h2 {
+.tile.secondary > a {
+    padding: 40px 20px;
+}
+.tile h2 {
     margin-top: 0;
     font-size: 26px;
 }
-.tile-secondary h2,
-.tile-secondary p {
+.tile h3 {
+    margin-top: 0;
+}
+.tile h3::after {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 400;
+    content: '\f178';
+    float: right;
+}
+.tile p {
+    color: #858585;    
+}
+.tile.secondary h2,
+.tile.secondary p {
     color: #fff;
 }
-.tile-secondary > a::after {
-    font-family: theme4b;
-    content: '';
+
+/*** icons ***/
+
+.tile.icon > a::before {
+    font-weight: 300;
+    background: #fff;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 24px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px rgba(231, 232, 236, 0.3), 0px 1.2px 2px rgba(231, 232, 236, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.tile.secondary > a::before {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -517,17 +606,10 @@ td.ProfilePic > a > img {
     color: #000;
     opacity: 0.05;
 }
-.tile-secondary.button-press > a::after {
-    content: '\f000';
-}
-.tile-secondary.cloud > a::after {
-    content: '\f001';
-}
 
 /****** landing controls ******/
-.home .HLLandingControl,
-.home .tile-secondary + .tile-secondary {
-    margin-bottom: 40px;
+.hero .ContentUserControl .HLLandingControl {
+    margin-bottom: 0;
 }
 .ContentUserControl .HLLandingControl,
 .HLLandingControl .Content {
@@ -711,6 +793,7 @@ a.label.label-search-tag {
     max-width: unset;
     padding: 20px;
     border: 1px solid #fafafa;
+    margin: 0 15px;
 }
 .HLLandingControl.HLEngagement ul li > .row.title-row {
     display: flex;
@@ -741,7 +824,6 @@ a.label.label-search-tag {
 
 /****** primary color background ******/
 .primary-color-bg {
-    margin-top: 15px;
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/ECONVERSEMEDIA/f806703f-aed7-4054-a35a-77d806ee94f3/UploadedImages/Theme%204B/hero.png');
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -785,6 +867,7 @@ a.label.label-search-tag {
 .footer-links ul {
     display: flex;
     justify-content: flex-end;
+    padding-left: 0;
 }
 .footer-links ul li {
     list-style-type: none;
@@ -812,7 +895,88 @@ a.label.label-search-tag {
     }
 }
 
-/*** larger screens only ***/
+/*** smaller screens only ***/
+
+@media (max-width: 1230px) {
+    .primary-color-bg,
+    .bg-gray,
+    #FOOTER {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .row-wide div[class*='section'],
+    .interior .row-wide div[class*='section'] {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .home .row-wide div[class*='section']:not(.col-md-12) {
+        max-width: 630px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #MPOuterMost .section-header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media (max-width: 991px) {
+    .margin-bottom-40-mob {
+        margin-bottom: 40px;
+    }
+    .tiles > .col-md-12 {
+        flex-wrap: wrap;
+    }
+    .tiles .tile {
+        flex-basis: 50%;
+    }
+    .tiles .tile:first-child,
+    .tiles .tile:nth-child(2) {
+        margin-bottom: 15px;
+    }
+    .HLEngagement.HLLandingControl ul {
+        flex-wrap: wrap;
+    }
+    .HLEngagement.HLLandingControl ul li {
+        flex-basis: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+    #FOOTER > .row:first-child > .col-md-12:first-child {
+        flex-wrap: wrap;
+    }
+    .footer-logo-contact {
+        margin-bottom: 20px;
+    }
+    .footer-logo-contact,
+    .footer-links {
+        flex-basis: 100%;
+    }
+    .footer-links ul {
+        justify-content: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero > .col-md-12 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero > .col-md-12 > div {
+        flex-basis: 100%;
+    }
+    .hero .hero-title {
+        margin-bottom: 30px;
+    }
+    .hero > .col-md-12 > .icon {
+        margin: 15px;
+    }
+}
+
 @media (max-width: 767px) {
     .search-btn-top {
         display: none;
@@ -828,7 +992,8 @@ a,
 .arrow-link a,
 .HLLandingControl div[id*="More"] a,
 .HLLandingControl div[id*="BottomLink"] a,
-a.label.label-search-tag {
+a.label.label-search-tag,
+.tile h3 {
     color: [PrimaryColor];
 }
 
@@ -859,7 +1024,7 @@ a:focus,
 /*** background: Secondary Color ***/
 
 .hero .icon a::before,
-.tile-secondary > a,
+.tile.secondary > a,
 .alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
     background: [SecondaryColor];
 }
