@@ -556,6 +556,10 @@ td.ProfilePic > a > img {
     position: relative;
     background: #fff;
 }
+.tile > a:hover,
+.tile > a:focus {
+    box-shadow: 0px 4px 4px #E7E8EC, 0px 1px 2px #E7E8EC;
+}
 .tile.secondary > a {
     padding: 40px 20px;
 }
@@ -957,7 +961,7 @@ a.label.label-search-tag {
         flex-basis: 100%;
     }
     .footer-links ul {
-        justify-content: auto;
+        justify-content: flex-start;
     }
 }
 
@@ -980,6 +984,98 @@ a.label.label-search-tag {
 @media (max-width: 767px) {
     .search-btn-top {
         display: none;
+    }
+
+    /*** header and nav ***/
+    #NAV,
+    #MPheader > div.row:nth-child(2) {
+        float: none;
+    }
+    #Logo {
+        position: absolute;
+        top: 0;
+    }
+    .Welcome button.btn-default.btn.imgButton {
+        position: absolute;
+        top: -15px;
+        right: 70px;
+        z-index: 10;
+    }
+    #Welcome_LoginLink {
+        position: absolute;
+        top: 0;
+        right: 85px;
+        z-index: 10;
+    }
+    #ProfileContainer {
+        top: 45px;
+    }
+    #DesktopLogoDiv {
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 630px) {
+    .HLLandingControl.HLEngagement ul {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .footer-links ul {
+        flex-wrap: wrap;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .footer-links ul li {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .tiles .tile {
+        flex-basis: 100%;
+    }
+    .tiles .tile:nth-child(3) {
+        margin-bottom: 15px;
+    }
+    .footer-bottom-content > .col-md-12 {
+        flex-wrap: wrap;
+    }
+    .footer-bottom-content > .col-md-12 > div {
+        flex-basis: 100%;
+        text-align: center;
+    }
+    h1, .h1 {
+        font-size: 28px;
+    }
+
+    .ContentUserControl:not(.featured-content) .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label {
+        width: auto;
+        height: 70px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: auto;
+    }
+    .ContentUserControl:not(.featured-content) .HLLandingControl.SearchResults ul li {
+        padding-right: 20px;
+        padding-bottom: 90px;
+    }
+    .ContentUserControl:not(.featured-content) .HLLandingControl.SearchResults ul li .col-md-12 {
+        position: static;
+    }
+
+}
+
+@media (max-width: 425px) {
+    #Welcome_LoginLink {
+        font-size: 14px;
+        padding: 10px;
+        right: 15px;
+        top: -45px;
+    }
+    #MPheader > div.row:first-child {
+        padding-top: 45px;
     }
 }
 

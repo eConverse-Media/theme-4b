@@ -56,7 +56,7 @@ function handleByLineAndPostedIn(self) {
     var byline = $(self).find('.ByLine'),
         postedIn = $(self).find('h5');
  
-    $(byline).text($.trim($(byline).text()));
+    $(byline).html($.trim($(byline).html()));
 
     $(postedIn).insertAfter(byline);
 }
