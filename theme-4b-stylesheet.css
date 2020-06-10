@@ -134,7 +134,11 @@ button:hover,
 button:focus,
 input,
 input:hover,
-input:focus {
+input:focus,
+a .date-block,
+.btn::after,
+.btn:hover::after,
+.btn:focus::after {
     transition: .3s;
 }
 
@@ -260,6 +264,50 @@ td.ProfilePic > a > img {
     color: #fff;
 }
 
+/*** default HL buttons ***/
+.btn:not(.dropdown-toggle) {
+	white-space: normal;
+}
+.btn {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    padding: 9px 10px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-style: solid;
+}
+.btn-success,
+.btn-primary,
+.btn-info {
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.btn-success::after,
+.btn-primary::after,
+.btn-info::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: -1;
+    opacity: 0;
+}
+.btn-success:hover::after,
+.btn-success:focus::after,
+.btn-primary:hover::after,
+.btn-primary:focus::after,
+.btn-info:hover::after,
+.btn-info:focus::after {
+    opacity: 0.3;
+}
+
 /****** icons ******/
 .icon.bell a::before {
     font-family: theme4b;
@@ -375,7 +423,7 @@ td.ProfilePic > a > img {
 .navbar-default .navbar-nav>.disabled>a:hover, .navbar-default .navbar-nav>.disabled>a:focus,
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
 	color: #4B4B4B;
-	background-color: transparent;
+	background-color: #FAFAFA;
 }
 
 /* caret */
@@ -383,15 +431,6 @@ td.ProfilePic > a > img {
     border-bottom-color: #4B4B4B;
     border-top-color: #4B4B4B;
 }
-.navbar-default .navbar-nav>.dropdown>a:hover .caret, 
-.navbar-default .navbar-nav>.dropdown>a:focus .caret,
-.navbar-default .navbar-nav > .open > a .caret,
-.navbar-default .navbar-nav > .open:hover > a .caret,
-.navbar-default .navbar-nav > .open:focus > a .caret {
-    border-top-color: #4B4B4B;
-    border-bottom-color: #4B4B4B;
-}
-
 /* removing extraneous padding on desktop */
 @media (min-width: 768px) {
     #NAV .row {
@@ -402,6 +441,54 @@ td.ProfilePic > a > img {
     .navbar-collapse {
         padding: 0;
     }
+}
+
+/* dropdowns */
+#MPButtonBar .navbar-nav>li>.dropdown-menu {
+	background-color: #fff;
+    border: 1px solid #FBFBFB;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 6px 6px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#MPButtonBar .navbar-nav .dropdown-menu>li>a {
+    color: #4B4B4B;
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 600;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+}
+#MPButtonBar .navbar-nav .dropdown-menu>li>a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: .3s;
+}
+
+/* hover state */
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus {
+    background: #fff;
+}
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a::after,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover::after,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus::after,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:hover::after,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus::after {
+    opacity: 1;
+    transition: .3s;
 }
 
 /****** homepage hero ******/
@@ -464,6 +551,11 @@ td.ProfilePic > a > img {
     line-height: 70px;
     font-weight: 300;
     margin: 0 auto 10px auto;
+    color: #fff;
+}
+.hero .icon a:hover,
+.hero .icon a:focus {
+    color: #B5BBC7;
 }
 
 /*** alternate homepage hero ***/
@@ -560,7 +652,8 @@ td.ProfilePic > a > img {
 .tile > a:focus {
     box-shadow: 0px 4px 4px #E7E8EC, 0px 1px 2px #E7E8EC;
 }
-.tile.secondary > a {
+.tile.secondary > a,
+.tile.primary > a {
     padding: 40px 20px;
 }
 .tile h2 {
@@ -580,7 +673,9 @@ td.ProfilePic > a > img {
     color: #858585;    
 }
 .tile.secondary h2,
-.tile.secondary p {
+.tile.secondary p,
+.tile.primary h2,
+.tile.primary p {
     color: #fff;
 }
 
@@ -602,7 +697,8 @@ td.ProfilePic > a > img {
     transform: translate(-50%, 50%);
 }
 
-.tile.secondary > a::before {
+.tile.secondary > a::before,
+.tile.primary > a::before {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -621,16 +717,45 @@ td.ProfilePic > a > img {
     border: none;
 }
 
-.HLLandingControl ul li {
+.HLLandingControl.HLEventList ul li {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.HLLandingControl.SearchResults ul li,
+.HLLandingControl.HLDiscussions ul li,
+.HLLandingControl.HLRecentBlogs ul li,
+.HLLandingControl.HLEventList ul li > a,
+.HLLandingControl.HLEngagement ul li > a {
     background: #fff;
     padding: 20px;
     box-shadow: 0px 4px 15px rgba(231, 232, 236, 0.3), 0px 1px 2px #E7E8EC;
     border-radius: 6px;
     border: 1px solid #FBFBFB;
     position: relative;
+    display: block;
+    margin-bottom: 10px;
 }
-.HLLandingControl ul li:last-child {
+.HLLandingControl.SearchResults ul li:last-child,
+.HLLandingControl.HLDiscussions ul li:last-child,
+.HLLandingControl.HLRecentBlogs ul li:last-child,
+.HLLandingControl.HLEventList ul li:last-child > a {
     margin-bottom: 0;
+}
+
+.HLLandingControl.HLEventList ul li > a {
+    color: #7C7C7C;
+}
+.HLLandingControl.HLEventList ul li > a:hover,
+.HLLandingControl.HLEventList ul li > a:focus,
+.HLLandingControl.HLEngagement ul li > a:hover,
+.HLLandingControl.HLEngagement ul li > a:focus {
+    background: #fafafa;
+}
+.HLLandingControl.HLEventList ul li > a:hover .date-block,
+.HLLandingControl.HLEventList ul li > a:focus .date-block {
+    background: #fff;
 }
 
 .HLLandingControl ul li .title-row .col-sm-2.col-md-2 {
@@ -696,6 +821,10 @@ td.ProfilePic > a > img {
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.blog::before {
     content: '\f109';
 }
+.HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.default::before {
+    font-family: theme4b;
+    content: '\f004';
+}
 
 /*** bylines and posted in ***/
 .HLLandingControl .ByLine,
@@ -716,6 +845,9 @@ td.ProfilePic > a > img {
 }
 
 /*** all content list tags ***/
+.content-tags {
+    margin-top: 10px;
+}
 .content-tags .text-muted {
     display: none;
 }
@@ -728,6 +860,10 @@ a.label.label-search-tag {
     line-height: 1.18;
     border-radius: 6px;
     padding: 4px 10px;
+}
+a.label.label-search-tag:hover,
+a.label.label-search-tag:focus {
+    text-decoration: none;
 }
 
 /*** events ***/
@@ -793,18 +929,30 @@ a.label.label-search-tag {
     box-shadow: none;
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: calc(33% - 30px);
+    flex-basis: 33%;
+    display: flex;
+    padding: 0;
+    margin: 0;
     max-width: unset;
+    background: transparent;
+    border: none;
+}
+.HLLandingControl.HLEngagement ul li > a {
+    box-shadow: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
     padding: 20px;
     border: 1px solid #fafafa;
     margin: 0 15px;
+    text-decoration: none;
 }
-.HLLandingControl.HLEngagement ul li > .row.title-row {
+.HLLandingControl.HLEngagement ul li > a > .row.title-row {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.HLLandingControl.HLEngagement .title-row a[id*="NameLink"] {
+.HLLandingControl.HLEngagement .title-row h3 {
     text-decoration: none;   
     color: #000;
     font-size: 20px;
@@ -1106,14 +1254,27 @@ a:focus,
 .search-btn-top,
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
 .HLEventList .date-block,
-.HLEngagement .points-label {
+.HLEngagement .points-label,
+a.label.label-search-tag:hover,
+a.label.label-search-tag:focus,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus  {
     color: [SecondaryColor];
 }
 
 /*** background: Primary Color ***/
 
 #Welcome_LoginLink,
-.primary-color-bg {
+.primary-color-bg,
+.tile.primary > a,
+.btn.btn-primary,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.open .dropdown-toggle .btn.btn-primary {
     background-color: [PrimaryColor];
 }
 
@@ -1121,12 +1282,49 @@ a:focus,
 
 .hero .icon a::before,
 .tile.secondary > a,
-.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
+.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
+.progress-bar-info,
+.btn.btn-success,
+.btn.btn-success:hover,
+.btn.btn-success:focus,
+.btn.btn-success:active,
+.open .dropdown-toggle .btn.btn-success,
+.btn.btn-info,
+.btn.btn-info:hover,
+.btn.btn-info:focus,
+.open .dropdown-toggle .btn.btn-info {
     background: [SecondaryColor];
+}
+
+/*** background: Secondary Color Gradient ***/
+
+#MPButtonBar .navbar-nav .dropdown-menu>li>a::after {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), [SecondaryColor];
 }
 
 /*** border: Primary Color ***/
 
-a.label.label-search-tag {
+a.label.label-search-tag,
+.btn.btn-primary,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.open .dropdown-toggle.btn.btn-primary {
     border-color: [PrimaryColor];
+}
+
+/*** border: Secondary Color ***/
+
+a.label.label-search-tag:hover,
+a.label.label-search-tag:focus,
+.btn.btn-success,
+.btn.btn-info {
+    border-color: [SecondaryColor]
+}
+.navbar-default .navbar-nav>.dropdown>a:hover .caret, 
+.navbar-default .navbar-nav>.dropdown>a:focus .caret,
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open:hover > a .caret,
+.navbar-default .navbar-nav > .open:focus > a .caret {
+    border-top-color: [SecondaryColor];
+    border-bottom-color: [SecondaryColor];
 }

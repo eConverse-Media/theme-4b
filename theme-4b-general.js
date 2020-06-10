@@ -6,6 +6,7 @@ $(function () {
     handleAllContentList();
     handleBlogsList();
     handleEventDateBlocks();
+    handleMostActiveMembers();
     handleCopyright();
 });
 
@@ -18,10 +19,14 @@ function handleSearch() {
 }
 
 function handleHero() {
-    var name = $('#ProfileContainer h4').text(),
-        greeting = '<div class="hero-greeting">Welcome back, <strong>' + name + '.</strong></div>';
+    var name = $('#ProfileContainer h4').text();
 
-    $(greeting).prependTo('.hero');    
+    if (!!name) {
+        var greeting = '<div class="hero-greeting">Welcome back, <strong>' + name + '.</strong></div>';
+        
+        $(greeting).prependTo('.hero');    
+    }
+
 }
 
 function handleTileLink(self, link) {
@@ -110,6 +115,22 @@ function handleEventDateBlocks() {
 
         month = month.substring(0, 3);
         $(self).find('.date-block .calendar-month').text(month);
+
+        // handle tiles
+
+        var link = $(self).find('h3 a');
+        handleTileLink(self, link);
+    });
+}
+
+function handleMostActiveMembers() {
+    $('.HLLandingControl.HLEngagement ul li').each(function () {
+        var self = $(this),
+            link = $(self).find('.col-md-9 > a');
+
+        $(link).wrap('<h3 />')
+
+        handleTileLink(self, link);
     });
 }
 
