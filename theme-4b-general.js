@@ -15,7 +15,39 @@ function handleNavLocation() {
 }
 
 function handleSearch() {
-    $('#NAV .navbar-nav').after('<button type="button" class="search-btn-top" />');
+    $('#NAV .navbar-nav').after('<button type="button" class="search-btn-top" onclick="toggleSearch();" />');
+    $('.search-bar-top').insertBefore('.search-btn-top');
+    $(document).click(function (e) {
+        var searchBar = $('.search-bar-top'),
+            searchButton = $('.search-btn-top'),
+            target = e.target;
+
+        if (!($(target).is(searchBar)) &&
+            !($(target).is(searchButton)) &&
+            !($(target).closest('.search-bar-top').html()) &&
+            !($(target).closest('.search-btn-top').html())) {
+                closeSearch();
+        }
+    });
+}
+
+function toggleSearch() {
+    if ($('.search-bar-top').hasClass('open')) {
+        closeSearch();
+    } else {
+        openSearch();
+    }
+}
+    
+function closeSearch() {
+    $('.search-bar-top').removeClass('open');
+    $('.search-btn-top').removeClass('open');
+}
+
+function openSearch() {
+    $('.search-bar-top').addClass('open');
+    $('.search-btn-top').addClass('open');
+    $('.search-bar-top .form-control').focus();
 }
 
 function handleHero() {
@@ -23,7 +55,7 @@ function handleHero() {
 
     if (!!name) {
         var greeting = '<div class="hero-greeting">Welcome back, <strong>' + name + '.</strong></div>';
-        
+
         $(greeting).prependTo('.hero');    
     }
 

@@ -309,31 +309,38 @@ td.ProfilePic > a > img {
 }
 
 /****** icons ******/
-.icon.bell a::before {
+.icon.bell a::before,
+.white-tile.bell::before {
     font-family: theme4b;
     content: '\f002';
 }
-.icon.refresh a::before {
+.icon.refresh a::before,
+.white-tile.refresh::before {
     font-family: 'Font Awesome 5 Pro';
     content: '\f0e2';
 }
-.icon.laptop a::before {
+.icon.laptop a::before,
+.white-tile.laptop::before {
     font-family: 'Font Awesome 5 Pro';
     content: '\f109';
 }
-.icon.folders a::before {
+.icon.folders a::before,
+.white-tile.folders::before {
     font-family: 'Font Awesome 5 Pro';
     content: '\f660';
 }
-.icon.users a::before {
+.icon.users a::before,
+.white-tile.users::before {
     font-family: 'Font Awesome 5 Pro';
     content: '\f0c0';
 }
-.button-press a::before {
+.button-press a::before,
+.white-tile.button-press::before {
     font-family: theme4b;
     content: '\f000';
 }
-.cloud a::before {
+.cloud a::before,
+.white-tile.cloud::before {
     font-family: theme4b;
     content: '\f001';
 }
@@ -379,7 +386,9 @@ td.ProfilePic > a > img {
     float: none !important;
 }
 
-.search-btn-top {
+.search-btn-top,
+.search-bar-top button[id*="SearchButton"],
+#searchColumn button[id*="SearchButton"] {
     font-size: 14px;
     line-height: 40px;
     width: 40px;
@@ -391,12 +400,72 @@ td.ProfilePic > a > img {
     padding: 0;
     margin-top: 5px;
     margin-right: 20px;
+    margin-left: 5px;
+}
+#searchColumn button[id*="SearchButton"] {
+    margin-top: 0;
+}
+#searchColumn button[id*="SearchButton"] {
+    margin-right: 0;
+}
+.search-btn-top:hover,
+.search-btn-top:focus,
+.search-bar-top button[id*="SearchButton"]:hover,
+.search-bar-top button[id*="SearchButton"]:focus,
+#searchColumn button[id*="SearchButton"]:hover,
+#searchColumn button[id*="SearchButton"]:focus {
+    color: #fff;
 }
 
-.search-btn-top::before {
+.search-bar-top button[id*="SearchButton"] .glyphicon-search,
+#searchColumn button[id*="SearchButton"] .glyphicon-search {
+    top: 0;
+    width: auto;
+    vertical-align: unset !important;
+}
+
+.search-btn-top::before,
+.search-bar-top button[id*="SearchButton"] .glyphicon-search::before,
+#searchColumn button[id*="SearchButton"] .glyphicon-search::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f002';
+}
+.search-bar-top {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: z-index .3s, opacity .3s;
+}
+
+.open.search-bar-top {
+    z-index: 10;
+    opacity: 1;
+    transition: z-index .3s, opacity .3s;
+}
+.search-bar-top .form-control {
+    margin-top: 5px;
+    float: right;
+    padding: 0;
+    width: 0;
+    opacity: 0;
+    transition: .3s;
+}
+.open.search-bar-top .form-control {
+    padding: 10px 12px;
+    width: 340px;
+    opacity: 1;
+    transition: .3s;
+}
+.search-bar-top .form-control,
+#searchColumn .form-control {
+    border: none;
+    background: #FAFAFA;
+    border-radius: 0;
+    border-bottom: 1px solid #E7E8EC;
+    box-shadow: none;
+    height: 40px;
 }
 
 /*** main nav ***/
@@ -633,12 +702,19 @@ td.ProfilePic > a > img {
     padding: 0 15px;
     display: flex;
 }
+.tiles .white-tile {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(25% - 30px);
+    margin: 0 15px;
+}
 .tiles .tile > a {
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basiS: 100%;
+    flex-basis: 100%;
 }
-.tile > a {
+.tile > a,
+.white-tile {
     display: block;
     padding: 25px 20px;
     border-radius: 6px;
@@ -660,16 +736,34 @@ td.ProfilePic > a > img {
     margin-top: 0;
     font-size: 26px;
 }
-.tile h3 {
+.tile h3,
+.white-tile h3 {
     margin-top: 0;
 }
-.tile h3::after {
+.tile h3::after,
+.white-tile h3 a::after {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f178';
     float: right;
 }
-.tile p {
+.white-tile h3 a {
+    display: block;
+    border-radius: 6px;
+    margin: -25px -20px 0 -20px;
+    padding: 15px 20px;
+}
+.white-tile h3 a:hover,
+.white-tile h3 a:focus {
+    color: #fff;
+    margin-left: -30px;
+    margin-right: -30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-decoration: none;
+}
+.tile p,
+.white-tile p {
     color: #858585;    
 }
 .tile.secondary h2,
@@ -681,7 +775,8 @@ td.ProfilePic > a > img {
 
 /*** icons ***/
 
-.tile.icon > a::before {
+.tile.icon > a::before,
+.white-tile::before {
     font-weight: 300;
     background: #fff;
     width: 55px;
@@ -823,7 +918,7 @@ td.ProfilePic > a > img {
 }
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label.default::before {
     font-family: theme4b;
-    content: '\f004';
+    content: '\f005';
 }
 
 /*** bylines and posted in ***/
@@ -1130,7 +1225,8 @@ a.label.label-search-tag:focus {
 }
 
 @media (max-width: 767px) {
-    .search-btn-top {
+    .search-btn-top,
+    .search-bar-top {
         display: none;
     }
 
@@ -1143,23 +1239,16 @@ a.label.label-search-tag:focus {
         position: absolute;
         top: 0;
     }
-    .Welcome button.btn-default.btn.imgButton {
-        position: absolute;
-        top: -15px;
-        right: 70px;
-        z-index: 10;
-    }
-    #Welcome_LoginLink {
-        position: absolute;
-        top: 0;
-        right: 85px;
-        z-index: 10;
-    }
     #ProfileContainer {
         top: 45px;
     }
     #DesktopLogoDiv {
         padding-left: 15px;
+    }
+    .HLWelcome {
+        position: absolute;
+        top: 0;
+        right: 85px;
     }
 }
 
@@ -1216,14 +1305,19 @@ a.label.label-search-tag:focus {
 }
 
 @media (max-width: 425px) {
+    #MPheader > .row:first-child > .col-md-12 > .pull-right {
+        float: none !important;
+        text-align: right;
+    }
+    .HLWelcome {
+        margin-right: 15px;
+        position: relative;
+        top: auto;
+        right: auto;
+    }
     #Welcome_LoginLink {
         font-size: 14px;
         padding: 10px;
-        right: 15px;
-        top: -45px;
-    }
-    #MPheader > div.row:first-child {
-        padding-top: 45px;
     }
 }
 
@@ -1251,7 +1345,9 @@ a:focus,
 .HLLandingControl div[id*="More"] a:focus,
 .HLLandingControl div[id*="BottomLink"] a:hover,
 .HLLandingControl div[id*="BottomLink"] a:focus,
-.search-btn-top,
+.search-btn-top, 
+.search-bar-top button[id*="SearchButton"], 
+#searchColumn button[id*="SearchButton"],
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
 .HLEventList .date-block,
 .HLEngagement .points-label,
@@ -1261,7 +1357,8 @@ a.label.label-search-tag:focus,
 #MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover,
 #MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus,
 #MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
-#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus  {
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus,
+.white-tile::before  {
     color: [SecondaryColor];
 }
 
@@ -1292,7 +1389,15 @@ a.label.label-search-tag:focus,
 .btn.btn-info,
 .btn.btn-info:hover,
 .btn.btn-info:focus,
-.open .dropdown-toggle .btn.btn-info {
+.open .dropdown-toggle .btn.btn-info,
+.search-btn-top:hover,
+.search-btn-top:focus,
+.search-bar-top button[id*="SearchButton"]:hover,
+.search-bar-top button[id*="SearchButton"]:focus,
+#searchColumn button[id*="SearchButton"]:hover,
+#searchColumn button[id*="SearchButton"]:focus,
+.white-tile h3 a:hover,
+.white-tile h3 a:focus {
     background: [SecondaryColor];
 }
 
