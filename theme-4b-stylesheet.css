@@ -46,7 +46,8 @@ body {
 /* reset alerts to neutral colours */
 .alert-warning, .alert-success, 
 .ideation-home .alert.alert-success, 
-.ideation-detail .alert.alert-success {
+.ideation-detail .alert.alert-success,
+.alert-info {
     color: inherit;
     background-color: #f9f9f9;
     border-color: #f5f5f5;
@@ -78,7 +79,8 @@ body {
 /*** fonts ***/
 body,
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .h5, .h6,
+.profile input[id*="FilterTextValue"] + div > div[id*="UpdatePanel"] {
     font-family: lato, sans-serif;
     color: #7C7C7C;
     font-weight: 400;
@@ -89,7 +91,8 @@ h1, .h1 {
     font-size: 40px;
     line-height: 1.15;
 }
-h2, .h2 {
+h2, .h2,
+.profile input[id*='FilterTextValue'] + div {
     font-weight: 600;
     font-size: 32px;
     line-height: 1.1875;
@@ -171,6 +174,10 @@ td.ProfilePic > a {
 }
 .Welcome .imgButton.btn {
     background-color: #fff;
+}
+td.ProfilePic > a {
+    width: 50px;
+    height: 50px;
 }
 .list-group-item-image {
     width: 40px;
@@ -282,6 +289,10 @@ td.ProfilePic > a > img {
     border-style: solid;
     text-transform: uppercase;
 }
+.btn-community-stats-static, 
+.btn-community-stats-static:hover {
+    padding: 5px;
+}
 .btn-success,
 .btn-primary,
 .btn-info {
@@ -316,6 +327,16 @@ td.ProfilePic > a > img {
 button.btn.dropdown-toggle {
     text-transform: none;
     font-weight: 400;
+}
+
+/****** tables ******/
+.Container thead .Header td, 
+th, 
+.ListContainer .ListHeader, 
+.drItemSubHeader, 
+.table-thead-background tr th, 
+.table-thead-background tr td {
+    background-color: #fafafa;
 }
 
 /****** icons ******/
@@ -405,7 +426,8 @@ button.btn.dropdown-toggle {
 
 .search-btn-top,
 .search-bar-top button[id*="SearchButton"],
-#searchColumn button[id*="SearchButton"] {
+#searchColumn button[id*="SearchButton"],
+.custom-search-form .input-group-btn a[id*="btnSearch"] {
     font-size: 14px;
     line-height: 40px;
     width: 40px;
@@ -419,11 +441,16 @@ button.btn.dropdown-toggle {
     margin-right: 20px;
     margin-left: 5px;
 }
-#searchColumn button[id*="SearchButton"] {
+#searchColumn button[id*="SearchButton"],
+.custom-search-form .input-group-btn a[id*="btnSearch"] {
     margin-top: 0;
 }
-#searchColumn button[id*="SearchButton"] {
+#searchColumn button[id*="SearchButton"],
+.custom-search-form .input-group-btn a[id*="btnSearch"] {
     margin-right: 0;
+}
+.custom-search-form a[id*="btnSearch"]::after {
+    display: none;
 }
 .search-btn-top:hover,
 .search-btn-top:focus,
@@ -433,9 +460,14 @@ button.btn.dropdown-toggle {
 #searchColumn button[id*="SearchButton"]:focus {
     color: #fff;
 }
+.custom-search-form .input-group-btn a[id*="btnSearch"]:hover,
+.custom-search-form .input-group-btn a[id*="btnSearch"]:focus {
+    color: #fff !important;
+}
 
 .search-bar-top button[id*="SearchButton"] .glyphicon-search,
-#searchColumn button[id*="SearchButton"] .glyphicon-search {
+#searchColumn button[id*="SearchButton"] .glyphicon-search,
+.custom-search-form a[id*="btnSearch"] .glyphicon-search {
     top: 0;
     width: auto;
     vertical-align: unset !important;
@@ -443,7 +475,8 @@ button.btn.dropdown-toggle {
 
 .search-btn-top::before,
 .search-bar-top button[id*="SearchButton"] .glyphicon-search::before,
-#searchColumn button[id*="SearchButton"] .glyphicon-search::before {
+#searchColumn button[id*="SearchButton"] .glyphicon-search::before,
+.custom-search-form a[id*="btnSearch"] .glyphicon-search::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f002';
@@ -476,7 +509,8 @@ button.btn.dropdown-toggle {
     transition: .3s;
 }
 .search-bar-top .form-control,
-#searchColumn .form-control {
+#searchColumn .form-control,
+.custom-search-form .form-control {
     border: none;
     background: #FAFAFA;
     border-radius: 0;
@@ -530,7 +564,8 @@ button.btn.dropdown-toggle {
 }
 
 /* dropdowns */
-#MPButtonBar .navbar-nav>li>.dropdown-menu {
+#MPButtonBar .navbar-nav>li>.dropdown-menu,
+.nav-tabs li>.dropdown-menu  {
 	background-color: #fff;
     border: 1px solid #FBFBFB;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
@@ -538,7 +573,8 @@ button.btn.dropdown-toggle {
     padding-top: 0;
     padding-bottom: 0;
 }
-#MPButtonBar .navbar-nav .dropdown-menu>li>a {
+#MPButtonBar .navbar-nav .dropdown-menu>li>a,
+.nav-tabs .dropdown-menu>li>a {
     color: #4B4B4B;
     font-size: 15px;
     line-height: 1.3;
@@ -548,7 +584,8 @@ button.btn.dropdown-toggle {
     z-index: 1;
     background: #fff;
 }
-#MPButtonBar .navbar-nav .dropdown-menu>li>a::after {
+#MPButtonBar .navbar-nav .dropdown-menu>li>a::after,
+.nav-tabs .dropdown-menu>li>a::after {
     content: '';
     position: absolute;
     top: 0;
@@ -561,18 +598,29 @@ button.btn.dropdown-toggle {
 }
 
 /* hover state */
+
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
+#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus,
+.nav-tabs .dropdown-menu>.active>a,
+.nav-tabs .dropdown-menu>.active>a:hover,
+.nav-tabs .dropdown-menu>.active>a:focus,
+.nav-tabs .dropdown-menu>li>a:hover,
+.nav-tabs .dropdown-menu>li>a:focus {
+    background: #fff;
+}
 #MPButtonBar .navbar-nav .dropdown-menu>.active>a,
 #MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover,
 #MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus,
-#MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
-#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus {
-    background: #fff;
+.nav-tabs .dropdown-menu>.active>a,
+.nav-tabs  .dropdown-menu>.active>a:hover,
+.nav-tabs  .dropdown-menu>.active>a:focus {
+    color: #fff;
 }
-#MPButtonBar .navbar-nav .dropdown-menu>.active>a::after,
-#MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover::after,
-#MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus::after,
-#MPButtonBar .navbar-nav .dropdown-menu>li>a:hover::after,
-#MPButtonBar .navbar-nav .dropdown-menu>li>a:focus::after {
+
+#MPButtonBar .navbar-nav .dropdown-menu>li:not(.active)>a:hover::after,
+#MPButtonBar .navbar-nav .dropdown-menu>li:not(.active)>a:focus::after,
+.nav-tabs .dropdown-menu>li:not(.active)>a:hover::after,
+.nav-tabs .dropdown-menu>li:not(.active)>a:focus::after {
     opacity: 1;
     transition: .3s;
 }
@@ -954,13 +1002,15 @@ button.btn.dropdown-toggle {
     margin-left: -6px;
 }
 a.label.label-search-tag,
-.ideation-category .alert.alert-success {
+.ideation-category .alert.alert-success,
+.community-list .label-default {
     background-color: transparent;
     font-size: 11px;
     line-height: 1.18;
     border-radius: 6px;
     padding: 4px 10px;
     font-weight: 400;
+    border: 1px solid;
 }
 a.label.label-search-tag:hover,
 a.label.label-search-tag:focus {
@@ -1124,6 +1174,9 @@ a.label.label-search-tag:focus {
     font-size: 12px;
     color: #1D1D1D;
 }
+.interior #MPOuterFooter {
+    margin-top: 50px;
+}
 #FOOTER > .row > .col-md-12 {
     display: flex;
     justify-content: space-between;
@@ -1245,17 +1298,19 @@ a.label.label-search-tag:focus {
 }
 
 /****** profile page ******/
-.bg-gray-profile {
+.bg-gray-profile,
+.full div.bg-gray-profile.section1 {
     background: #fafafa;
     box-shadow: 0px 4px 15px rgba(231, 232, 236, 0.3), 0px 1px 2px #E7E8EC;
     border-radius: 6px;
     padding: 0 20px 20px 20px;
     margin-top: 70px;
+    display: block !important;
 }
 .bg-gray-profile a[id*="ImageControl"] {
     margin-top: -70px;
 }
-.bg-gray-profile h2 {
+.bg-gray-profile h2:not(.ProfileUserName) {
     color: #1d1d1d;
     font-size: 20px;
     font-weight: 600;
@@ -1266,9 +1321,54 @@ a.label.label-search-tag:focus {
     background: transparent;
     padding: 0;
 }
-.profile h2 {
+.profile h2:not(.ProfileUserName),
+.profile input[id*="FilterTextValue"] + div {
     font-size: 24px;
     line-height: 1.2;
+}
+.profile .section1 + .col-md-9 {
+    padding: 0;
+}
+
+/*** tabs ***/
+
+.nav-tabs {
+    background: #fafafa;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+}
+.nav-tabs>li>a {
+    border: none;
+    border-radius: 6px;
+    margin-right: 8px;
+    padding: 10px 15px;
+    border: none;
+    color: #1d1d1d;
+    line-height: 1.1875;
+    font-weight: 600;
+}
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus,
+.nav>li>a:hover, 
+.nav>li>a:focus {
+    color: #4B4B4B;
+    background-color: #e1e1e1;
+}
+.nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:hover, 
+.nav-tabs>li.active>a:focus {
+    color: #fff;
+    border: none;
+}
+.nav-tabs > li > a .caret {
+    margin-left: 5px;
+}
+.nav-tabs>li.active>a .caret, 
+.nav-tabs>li.active>a:hover .caret, 
+.nav-tabs>li.active>a:focus .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
 }
 
 /****** responsive ******/
@@ -1285,13 +1385,56 @@ a.label.label-search-tag:focus {
     }
 }
 
+/*** profile widths for desktop ***/
+@media (min-width: 992px) and (max-width: 1200px) {
+    .profile .col-md-9 .row,
+    .profile .col-md-3 .row {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .profile .section1 + .col-md-9 {
+        padding-right: 15px;
+    }
+}
+@media (min-width: 769px) and (max-width: 991px) {
+    .profile .col-md-9 div .row {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .profile .section1 + .col-md-9 {
+        padding-right: 0;
+    }
+    .bg-gray-profile .col-md-12 {
+        padding: 0;
+    }
+}
+@media (max-width: 991px) {
+    .bg-gray-profile {
+        padding-top: 20px;
+    }
+    .bg-gray-profile .col-md-8,
+    .bg-gray-profile .col-md-4 {
+        padding: 0;
+    }
+    .bg-gray-profile .col-md-4 .pull-right {
+        float: left !important;
+    }
+    .bg-gray-profile a[id*="ImageControl"] {
+        margin-top: 20px;
+    }
+    .bg-gray-profile .UserControl .text-center {
+        text-align: left;
+    }
+}
+
 
 /*** smaller screens only ***/
 
 @media (max-width: 1230px) {
     .primary-color-bg,
     .bg-gray,
-    #FOOTER {
+    #FOOTER,
+    #PageTitleH1 {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -1486,13 +1629,19 @@ a.label.label-search-tag:focus {
 /*** color: Primary Color ***/
 
 h2, .h2,
+.profile input[id*='FilterTextValue'] + div,
 a,
 .arrow-link a,
 .HLLandingControl div[id*="More"] a,
 .HLLandingControl div[id*="BottomLink"] a,
 a.label.label-search-tag,
+.community-list .label-default,
 .ideation-category .alert.alert-success,
-.tile h3 {
+.tile h3,
+a.list-group-item.active>.badge, 
+.nav-pills>.active>a>.badge,
+.nav-tabs  .dropdown-menu>li>a:hover,
+.nav-tabs  .dropdown-menu>li>a:focus {
     color: [PrimaryColor];
 }
 
@@ -1512,13 +1661,13 @@ a:focus,
 .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
 .HLEventList .date-block,
 .HLEngagement .points-label,
-#MPButtonBar .navbar-nav .dropdown-menu>.active>a,
-#MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover,
-#MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus,
 #MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
 #MPButtonBar .navbar-nav .dropdown-menu>li>a:focus,
 .white-tile::before  {
     color: [SecondaryColor];
+}
+.custom-search-form .input-group-btn a[id*="btnSearch"] {
+    color: [SecondaryColor] !important;
 }
 
 /*** background: Primary Color ***/
@@ -1537,8 +1686,24 @@ a:focus,
 .pagination>.active>a:hover, 
 .pagination>.active>span:hover, 
 .pagination>.active>a:focus, 
-.pagination>.active>span:focus {
+.pagination>.active>span:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, 
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
+.nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:hover, 
+.nav-tabs>li.active>a:focus,
+.nav-pills>li.active>a, 
+.nav-pills>li.active>a:hover, 
+.nav-pills>li.active>a:focus,
+.nav-tabs .dropdown-menu>.active>a,
+.nav-tabs  .dropdown-menu>.active>a:hover,
+.nav-tabs  .dropdown-menu>.active>a:focus {
     background-color: [PrimaryColor];
+}
+
+/*** background: Primary Color Gradient ***/
+.nav-tabs .dropdown-menu>li>a::after {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), [PrimaryColor];
 }
 
 /*** background: Secondary Color ***/
@@ -1562,9 +1727,16 @@ a:focus,
 .search-bar-top button[id*="SearchButton"]:focus,
 #searchColumn button[id*="SearchButton"]:hover,
 #searchColumn button[id*="SearchButton"]:focus,
+.custom-search-form a[id*="btnSearch"]:hover,
+.custom-search-form a[id*="btnSearch"]:focus,
 .white-tile h3 a:hover,
 .white-tile h3 a:focus,
-.badge {
+.badge,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning, 
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:hover,
+#MPButtonBar .navbar-nav .dropdown-menu>.active>a:focus {
     background: [SecondaryColor];
 }
 
@@ -1577,6 +1749,7 @@ a:focus,
 /*** border: Primary Color ***/
 
 a.label.label-search-tag,
+.community-list .label-default,
 .ideation-category .alert.alert-success,
 .btn.btn-primary,
 .btn.btn-primary:focus,
@@ -1589,6 +1762,13 @@ a.label.label-search-tag,
 .pagination>.active>a:focus, 
 .pagination>.active>span:focus {
     border-color: [PrimaryColor];
+}
+
+.nav-tabs > li > a .caret,
+.nav-tabs > li > a:hover .caret,
+.nav-tabs > li > a:focus .caret {
+    border-top-color: [PrimaryColor];
+    border-bottom-color: [SecondaryColor];
 }
 
 /*** border: Secondary Color ***/
