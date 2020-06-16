@@ -1696,8 +1696,8 @@ a:focus,
 .nav-pills>li.active>a:hover, 
 .nav-pills>li.active>a:focus,
 .nav-tabs .dropdown-menu>.active>a,
-.nav-tabs  .dropdown-menu>.active>a:hover,
-.nav-tabs  .dropdown-menu>.active>a:focus {
+.nav-tabs .dropdown-menu>.active>a:hover,
+.nav-tabs .dropdown-menu>.active>a:focus {
     background-color: [PrimaryColor];
 }
 
