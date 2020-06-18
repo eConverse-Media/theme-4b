@@ -748,7 +748,8 @@ th,
 .alternate.hero .ContentItemHtml {
     flex-basis: 55%;
 }
-.aternate-hero .featured-content .HLLandingControl {
+.aternate.hero .featured-content .HLLandingControl,
+.member-dashboard .featured-content .HLLandingControl {
     margin-bottom: 0;
 }
 .hero .featured-content {
@@ -766,30 +767,92 @@ th,
     text-transform: uppercase;
     margin-top: 0;
 }
-.hero .featured-content .HLLandingControl ul li {
+.hero .featured-content .HLLandingControl ul li,
+.member-dashboard .featured-content ul li {
     background: transparent;
     box-shadow: none;
     border: none;
     padding: 0 75px 0 0;
     position: relative;
 }
-.hero .featured-content .HLLandingControl h3 a {
+.hero .featured-content .HLLandingControl h3 a,
+.member-dashboard .dashboard-col-3.featured-content .HLLandingControl h3 a {
     color: #fff;
 }
-.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label {
+.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label,
+.member-dashboard .featured-content .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right label {
     background: transparent;
     top: 0;
     right: -55px;
     bottom: auto;
     width: auto;
 }
-.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
+.alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
+.member-dashboard .featured-content .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before {
     color: #fff;
     font-family: theme4b;
     content: '\f003';
 }
-.alternate.hero .HLLandingControl.SearchResults div[id*="More"] a {
+.alternate.hero .HLLandingControl.SearchResults div[id*="More"] a,
+.member-dashboard .featured-content .HLLandingControl.SearchResults div[id*="More"] a {
     color: #fff;
+}
+
+/****** member dashboard ******/
+.primary-color-bg.dashboard-row {
+    text-align: left;
+    padding: 0 calc(50% - 615px);
+}
+.dashboard-col-3.featured-content .HLLandingControl ul li {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: none;
+}
+.dashboard-col-3.featured-content .HLLandingControl ul li .ByLine, 
+.dashboard-col-3.featured-content .HLLandingControl ul li h5,
+.dashboard-col-3.featured-content .HLLandingControl ul li .ByLine a, 
+.dashboard-col-3.featured-content .HLLandingControl ul li h5 a {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.member-dashboard .greeting>a {
+    text-transform: none;
+    font-weight: 600;
+}
+.member-dashboard.open .greeting > a {
+    font-size: 24px;
+}
+.member-dashboard .progress,
+.member-dashboard .progress-bar-info,
+.member-dashboard .dashboard-btn em a {
+    border-radius: 6px;
+}
+.primary-color-bg .dashboard-toggle button {
+    transform: translateY(50%);
+    left: calc(50% - 600px);
+    border-radius: 6px;
+}
+.primary-color-bg .dashboard-toggle button:hover,
+.primary-color-bg .dashboard-toggle button:focus {
+    color: #fff;
+}
+.member-dashboard .email-content::before {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+    content: '\f0e0';
+    margin-right: 8px;
+    line-height: 20px;
+}
+.member-dashboard .email-content a {
+    text-decoration: none;
+}
+.member-dashboard .email-content a:hover,
+.member-dashboard .email-content a:focus {
+    text-decoration: underline;
+}
+.dashboard-link a {
+    margin-bottom: 15px;
 }
 
 /****** gray background section ******/
@@ -1602,6 +1665,9 @@ span.label.label-admin {
     .ideation-home .ideation-filter > * {
         margin-top: 10px;
     }
+    .primary-color-bg .dashboard-toggle button {
+        left: 15px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1672,6 +1738,9 @@ span.label.label-admin {
     }
     .bg-gray-profile .UserControl .text-center {
         text-align: left;
+    }
+    .primary-color-bg .open.member-dashboard>.row.row-wide {
+        height: 360px;
     }
 }
 
@@ -1919,7 +1988,11 @@ span.label.label-admin,
 .JoinLeaveLink a[id*="lbJoin"]:hover,
 .JoinLeaveLink a[id*="lbJoin"]:focus,
 .JoinLeaveLink a[id*="lbJoin"]:active,
-.btn-default::after {
+.btn-default::after,
+.member-dashboard .dashboard-btn em a:hover,
+.member-dashboard .dashboard-btn em a:focus,
+.primary-color-bg .dashboard-toggle button:hover,
+.primary-color-bg .dashboard-toggle button:focus {
     background: [SecondaryColor];
 }
 
