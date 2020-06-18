@@ -345,7 +345,7 @@ td.ProfilePic > a > img {
 .btn-info::after,
 .make-buttons em a::after,
 .summary-edit em a::after,
-.btn-default::after {
+.btn-default:not([id*="More"]):not([id*="Calendar"]) {
     content: '';
     position: absolute;
     left: 0;
@@ -1696,9 +1696,16 @@ span.label.label-admin {
     .tiles .tile {
         flex-basis: 50%;
     }
+    .tiles .white-tile {
+        flex-basis: calc(50% - 30px);
+    }
     .tiles .tile:first-child,
     .tiles .tile:nth-child(2) {
         margin-bottom: 15px;
+    }
+    .tiles .white-tile:first-child,
+    .tiles .white-tile:nth-child(2) {
+        margin-bottom: 45px;
     }
     .HLEngagement.HLLandingControl ul {
         flex-wrap: wrap;
@@ -1812,8 +1819,14 @@ span.label.label-admin {
     .tiles .tile {
         flex-basis: 100%;
     }
+    .tiles .white-tile {
+        flex-basis: calc(100% - 30px);
+    }
     .tiles .tile:nth-child(3) {
         margin-bottom: 15px;
+    }
+    .tiles .white-tile:nth-child(3) {
+        margin-bottom: 45px;
     }
     .footer-bottom-content > .col-md-12 {
         flex-wrap: wrap;
@@ -1988,7 +2001,7 @@ span.label.label-admin,
 .JoinLeaveLink a[id*="lbJoin"]:hover,
 .JoinLeaveLink a[id*="lbJoin"]:focus,
 .JoinLeaveLink a[id*="lbJoin"]:active,
-.btn-default::after,
+.btn-default:not([id*="More"]):not([id*="Calendar"])::after,
 .member-dashboard .dashboard-btn em a:hover,
 .member-dashboard .dashboard-btn em a:focus,
 .primary-color-bg .dashboard-toggle button:hover,
