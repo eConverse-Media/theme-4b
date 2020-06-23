@@ -463,6 +463,9 @@ button.btn.dropdown-toggle.gear-button {
 .Welcome .btn-sm {
     margin-bottom: 5px;
 }
+#DesktopLogoDiv {
+    width: 215px;
+}
 
 /*** logo and top text links on one line ***/
 #Logo {
@@ -746,7 +749,7 @@ button.btn.dropdown-toggle.gear-button {
     font-weight: 300;
     margin: 0 auto 10px auto;
     color: #fff;
-    transition: font-size .3s, width .3s, height .3s, margin-top .3s;
+    transition: transform .3s;
 }
 .hero .icon a:hover,
 .hero .icon a:focus {
@@ -754,12 +757,8 @@ button.btn.dropdown-toggle.gear-button {
 }
 .hero .icon a:hover::before,
 .hero .icon a:focus::before {
-    font-size: 42px;
-    width: 75px;
-    height: 75px;
-    line-height: 75px;
-    margin-top: -5px;
-    transition: font-size .3s, width .3s, height .3s, margin-top .3s;
+    transform: scale(1.1);
+    transition: transform .3s;
 }
 
 /*** alternate homepage hero ***/
@@ -1332,6 +1331,12 @@ a.label.label-search-tag:focus,
     margin-top: 0;
     color: #fff;
 }
+.primary-color-bg .arrow-link a:hover,
+.primary-color-bg .arrow-link a:focus,
+.primary-color-bg .HLLandingControl a.btn.btn-default[id*="More"]:hover,
+.primary-color-bg .HLLandingControl a.btn.btn-default[id*="More"]:focus {
+    color: #B5BBC7;
+}
 
 /****** footer ******/
 #MPFooterLink,
@@ -1812,6 +1817,27 @@ span.label.label-admin {
     div[class*="col-xs-"] {
         padding-left: 8px;
         padding-right: 8px;
+    }
+
+    /*** digest viewer table ***/
+    .digest-viewer thead.table-thead-background {
+        display: none;
+    }
+    table.digest-viewer td.text-right {
+        float: right;
+    }
+    table.digest-viewer thead>tr>th, table.digest-viewer tbody>tr>th, table.digest-viewer tfoot>tr>th, table.digest-viewer thead>tr>td, table.digest-viewer tbody>tr>td, table.digest-viewer tfoot>tr>td {
+        text-align: left;
+    }
+    table.digest-viewer abbr.timeago {
+        cursor: default;
+        border-bottom: none;
+        text-decoration: none;
+    }
+    table.digest-viewer .timeago::before {
+        content: 'Posted:';
+        margin-right: 3px;
+        font-family: lato, sans-serif;
     }
 }
 
