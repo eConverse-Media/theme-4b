@@ -17,6 +17,7 @@ function handleNavLocation() {
 function handleSearch() {
     $('#NAV .navbar-nav').after('<button type="button" class="search-btn-top" onclick="toggleSearch();" />');
     $('.search-bar-top').insertBefore('.search-btn-top');
+    $('.search-bar-top .form-control').attr('placeholder', 'Search');
     $(document).click(function (e) {
         var searchBar = $('.search-bar-top'),
             searchButton = $('.search-btn-top'),

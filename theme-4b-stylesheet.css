@@ -144,9 +144,9 @@ input,
 input:hover,
 input:focus,
 a .date-block,
-.btn::after,
-.btn:hover::after,
-.btn:focus::after,
+.btn::before,
+.btn:hover::before,
+.btn:focus::before,
 .make-buttons em a::after,
 .make-buttons em a:hover::after,
 .make-buttons em a:focus::after,
@@ -155,7 +155,8 @@ a .date-block,
 .summary-edit em a:focus::after,
 .ideation-vote span,
 .ideation-vote span:hover,
-.ideation-vote span:focus {
+.ideation-vote span:focus,
+.label-search-tag .glyphicon-user {
     transition: .3s;
 }
 
@@ -340,12 +341,12 @@ td.ProfilePic > a > img {
     color: #fff;
     border: none;
 }
-.btn-success::after,
-.btn-primary::after,
-.btn-info::after,
-.make-buttons em a::after,
-.summary-edit em a::after,
-.btn-default:not([id*="More"]):not([id*="Calendar"]) {
+.btn-success::before,
+.btn-primary::before,
+.btn-info::before,
+.make-buttons em a::before,
+.summary-edit em a::before,
+.btn-default::before {
     content: '';
     position: absolute;
     left: 0;
@@ -356,19 +357,24 @@ td.ProfilePic > a > img {
     z-index: -1;
     opacity: 0;
 }
-.btn-success:hover::after,
-.btn-success:focus::after,
-.btn-primary:hover::after,
-.btn-primary:focus::after,
-.btn-info:hover::after,
-.btn-info:focus::after,
-.make-buttons em a:hover::after,
-.make-buttons em a:focus::after,
-.summary-edit em a:hover::after,
-.summary-edit em a:focus::after,
-.btn-default:hover::after,
-.btn-default:focus::after {
+.btn-success:hover::before,
+.btn-success:focus::before,
+.btn-primary:hover::before,
+.btn-primary:focus::before,
+.btn-info:hover::before,
+.btn-info:focus::before,
+.make-buttons em a:hover::before,
+.make-buttons em a:focus::before,
+.summary-edit em a:hover::before,
+.summary-edit em a:focus::before,
+.btn-default:hover::before,
+.btn-default:focus::before {
     opacity: 0.3;
+}
+.btn-default[id*="More"]::before,
+.btn-default[id*="Calendar"]::before,
+.btn-default.imgButton::before {
+    display: none;
 }
 
 /* dropdown toggles */
@@ -382,12 +388,12 @@ button.btn.dropdown-toggle.gear-button {
 }
 
 /****** tables ******/
-.Container thead .Header td, 
-th, 
-.ListContainer .ListHeader, 
-.drItemSubHeader, 
-.table-thead-background tr th, 
-.table-thead-background tr td {
+#MPOuterMost .Container thead .Header td, 
+#MPOuterMost th, 
+#MPOuterMost .ListContainer .ListHeader, 
+#MPOuterMost .drItemSubHeader, 
+#MPOuterMost .table-thead-background tr th, 
+#MPOuterMost .table-thead-background tr td {
     background-color: #fafafa;
 }
 
@@ -513,7 +519,13 @@ th,
 .search-bar-top button[id*="SearchButton"]:hover,
 .search-bar-top button[id*="SearchButton"]:focus,
 #searchColumn button[id*="SearchButton"]:hover,
-#searchColumn button[id*="SearchButton"]:focus {
+#searchColumn button[id*="SearchButton"]:focus,
+.search-btn-top:hover .glyphicon-search::before,
+.search-btn-top:focus .glyphicon-search::before,
+.search-bar-top button[id*="SearchButton"]:hover .glyphicon-search::before,
+.search-bar-top button[id*="SearchButton"]:focus .glyphicon-search::before,
+#searchColumn button[id*="SearchButton"]:hover .glyphicon-search::before,
+#searchColumn button[id*="SearchButton"]:focus .glyphicon-search::before {
     color: #fff;
 }
 .custom-search-form .input-group-btn a[id*="btnSearch"]:hover,
@@ -574,36 +586,41 @@ th,
     box-shadow: none;
     height: 40px;
 }
+.search-bar-top .form-control::placeholder,
+#searchColumn .form-control::placeholder,
+.custom-search-form .form-control::placeholder {
+    font-style: normal;
+}
 
 /*** main nav ***/
 #NAV {
     float: right;
 }
 
-#NAV,
-.navbar-default {
+#MPOuterHeader #NAV,
+#MPOuterHeader .navbar-default {
     background-color: transparent;
     border: none;
 }
-.navbar-default .navbar-nav>li>a,
-.navbar-default .navbar-nav>.active>a, 
-.navbar-default .navbar-nav>.disabled>a {
+.navbar.navbar-default .navbar-nav>li>a,
+.navbar.navbar-default .navbar-nav>.active>a, 
+.navbar.navbar-default .navbar-nav>.disabled>a {
     font-weight: 600;
     font-size: 16px;
     color: #4B4B4B; 
     background-color: transparent;
     padding: 15px 20px;
 }
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
-.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.disabled>a:hover, .navbar-default .navbar-nav>.disabled>a:focus,
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+.navbar.navbar-default .navbar-nav>li>a:hover, .navbar.navbar-default .navbar-nav>li>a:focus,
+.navbar.navbar-default .navbar-nav>.active>a:hover, .navbar.navbar-default .navbar-nav>.active>a:focus,
+.navbar.navbar-default .navbar-nav>.disabled>a:hover, .navbar.navbar-default .navbar-nav>.disabled>a:focus,
+.navbar.navbar-default .navbar-nav>.open>a, .navbar.navbar-default .navbar-nav>.open>a:hover, .navbar.navbar-default .navbar-nav>.open>a:focus {
 	color: #4B4B4B;
 	background-color: #FAFAFA;
 }
 
 /* caret */
-.navbar-default .navbar-nav>.dropdown>a .caret {
+.navbar.navbar-default .navbar-nav>.dropdown>a .caret {
     border-bottom-color: #4B4B4B;
     border-top-color: #4B4B4B;
 }
@@ -729,10 +746,20 @@ th,
     font-weight: 300;
     margin: 0 auto 10px auto;
     color: #fff;
+    transition: font-size .3s, width .3s, height .3s, margin-top .3s;
 }
 .hero .icon a:hover,
 .hero .icon a:focus {
     color: #B5BBC7;
+}
+.hero .icon a:hover::before,
+.hero .icon a:focus::before {
+    font-size: 42px;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin-top: -5px;
+    transition: font-size .3s, width .3s, height .3s, margin-top .3s;
 }
 
 /*** alternate homepage hero ***/
@@ -811,7 +838,11 @@ th,
 .dashboard-col-3.featured-content .HLLandingControl ul li .ByLine, 
 .dashboard-col-3.featured-content .HLLandingControl ul li h5,
 .dashboard-col-3.featured-content .HLLandingControl ul li .ByLine a, 
-.dashboard-col-3.featured-content .HLLandingControl ul li h5 a {
+.dashboard-col-3.featured-content .HLLandingControl ul li h5 a,
+.dashboard-col-3.featured-content .HLLandingControl ul li .ByLine a:focus, 
+.dashboard-col-3.featured-content .HLLandingControl ul li .ByLine a:hover, 
+.dashboard-col-3.featured-content .HLLandingControl ul li h5 a:focus, 
+.dashboard-col-3.featured-content .HLLandingControl ul li h5 a:hover {
     color: #fff;
     font-size: 14px;
     margin-bottom: 0;
@@ -864,6 +895,7 @@ th,
 /****** tiles ******/
 .tiles > .col-md-12 {
     display: flex;
+    justify-content: space-between;
     justify-content: space-evenly;
 }
 .tiles .tile {
@@ -1021,6 +1053,11 @@ th,
 .HLLandingControl.HLEngagement ul li > a:focus {
     background: #fafafa;
 }
+.HLLandingControl.HLEngagement ul li > a:hover,
+.HLLandingControl.HLEngagement ul li > a:focus {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2), 0px 7px 5px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
 .HLLandingControl.HLEventList ul li > a:hover .date-block,
 .HLLandingControl.HLEventList ul li > a:focus .date-block {
     background: #fff;
@@ -1096,7 +1133,7 @@ th,
 
 /*** bylines and posted in ***/
 .HLLandingControl .ByLine,
-.HLLandingControl h5 {
+.HLLandingControl ul li h5 {
     color: #7c7c7c;
     font-size: 14px;
     line-height: 1.14;
@@ -1130,7 +1167,9 @@ th,
 }
 a.label.label-search-tag,
 .ideation-category .alert.alert-success,
-.community-list .label-default {
+.community-list .label-default,
+.faceted-search-main .fs-result-row a.label.label-search-tag,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic {
     background-color: transparent;
     font-size: 11px;
     line-height: 1.18;
@@ -1140,7 +1179,11 @@ a.label.label-search-tag,
     border: 1px solid;
 }
 a.label.label-search-tag:hover,
-a.label.label-search-tag:focus {
+a.label.label-search-tag:focus,
+.faceted-search-main .fs-result-row a.label.label-search-tag:hover,
+.faceted-search-main .fs-result-row a.label.label-search-tag:focus,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic:hover,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic:focus {
     text-decoration: none;
 }
 
@@ -1212,7 +1255,7 @@ a.label.label-search-tag:focus {
     display: flex;
     padding: 0;
     margin: 0;
-    max-width: unset;
+    max-width: none;
     background: transparent;
     border: none;
 }
@@ -1357,6 +1400,7 @@ a.label.label-search-tag:focus {
 .ideation-home > .row.form-group + .row,
 .ideation-home > .row.form-group + .row > div {
     display: flex;
+    justify-content: space-between;
     justify-content: space-evenly;
 }
 .ideation-home > .row.form-group + .row > .col-md-4,
@@ -1890,6 +1934,9 @@ a,
 .HLLandingControl div[id*="More"] a,
 .HLLandingControl div[id*="BottomLink"] a,
 a.label.label-search-tag,
+.faceted-search-main .fs-result-row a.label.label-search-tag,
+.faceted-search-main .fs-result-row a.label.label-search-tag,
+.content-tags .glyphicon.glyphicon-user,
 .community-list .label-default,
 .ideation-category .alert.alert-success,
 .tile h3,
@@ -1919,7 +1966,15 @@ a:focus,
 #MPButtonBar .navbar-nav .dropdown-menu>li>a:hover,
 #MPButtonBar .navbar-nav .dropdown-menu>li>a:focus,
 .white-tile::before,
-.btn-default .glyphicon::before  {
+.btn-default .glyphicon::before,
+a.label.label-search-tag:hover,
+a.label.label-search-tag:focus,
+.faceted-search-main .fs-result-row a.label.label-search-tag:hover,
+.faceted-search-main .fs-result-row a.label.label-search-tag:focus,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic:hover,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic:focus,
+.content-tags .label-search-tag:hover .glyphicon.glyphicon-user,
+.content-tags .label-search-tag:focus .glyphicon.glyphicon-user {
     color: [SecondaryColor];
 }
 .custom-search-form .input-group-btn a[id*="btnSearch"] {
@@ -1932,6 +1987,8 @@ a:focus,
 .primary-color-bg,
 #PageTitleH1,
 .tile.primary > a,
+.tile.secondary > a:hover,
+.tile.secondary > a:focus,
 .btn.btn-primary,
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
@@ -1967,6 +2024,8 @@ a:focus,
 
 .hero .icon a::before,
 .tile.secondary > a,
+.tile.primary > a:hover,
+.tile.primary > a:focus,
 .alternate.hero .HLLandingControl.SearchResults ul li .title-row .col-md-3.pull-right .label::before,
 .progress-bar-info,
 .btn.btn-success,
@@ -2001,7 +2060,7 @@ span.label.label-admin,
 .JoinLeaveLink a[id*="lbJoin"]:hover,
 .JoinLeaveLink a[id*="lbJoin"]:focus,
 .JoinLeaveLink a[id*="lbJoin"]:active,
-.btn-default:not([id*="More"]):not([id*="Calendar"])::after,
+.btn-default::before,
 .member-dashboard .dashboard-btn em a:hover,
 .member-dashboard .dashboard-btn em a:focus,
 .primary-color-bg .dashboard-toggle button:hover,
@@ -2018,6 +2077,8 @@ span.label.label-admin,
 /*** border: Primary Color ***/
 
 a.label.label-search-tag,
+.faceted-search-main .fs-result-row a.label.label-search-tag,
+.faceted-search-main .fs-result-row a.label.label-search-tag,
 .community-list .label-default,
 .ideation-category .alert.alert-success,
 .btn.btn-primary,
@@ -2044,14 +2105,20 @@ a.label.label-search-tag,
 
 .btn.btn-success,
 .btn.btn-info,
-.JoinLeaveLink a[id*="lbJoin"] {
+.JoinLeaveLink a[id*="lbJoin"],
+a.label.label-search-tag:hover,
+a.label.label-search-tag:focus,
+.faceted-search-main .fs-result-row a.label.label-search-tag:hover,
+.faceted-search-main .fs-result-row a.label.label-search-tag:focus,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic:hover,
+.faceted-search-main .fs-result-row a.label.label-search-tag.topic:focus {
     border-color: [SecondaryColor]
 }
-.navbar-default .navbar-nav>.dropdown>a:hover .caret, 
-.navbar-default .navbar-nav>.dropdown>a:focus .caret,
-.navbar-default .navbar-nav > .open > a .caret,
-.navbar-default .navbar-nav > .open:hover > a .caret,
-.navbar-default .navbar-nav > .open:focus > a .caret {
+.navbar.navbar-default .navbar-nav>.dropdown>a:hover .caret, 
+.navbar.navbar-default .navbar-nav>.dropdown>a:focus .caret,
+.navbar.navbar-default .navbar-nav > .open > a .caret,
+.navbar.navbar-default .navbar-nav > .open:hover > a .caret,
+.navbar.navbar-default .navbar-nav > .open:focus > a .caret {
     border-top-color: [SecondaryColor];
     border-bottom-color: [SecondaryColor];
 }
